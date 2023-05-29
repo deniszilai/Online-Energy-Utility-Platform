@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class table="Client" name="Domain.Client">
+        <id name="id" column="id" type="long">
+            <generator class="increment"/>
+        </id>
+        <property name="username" column="username" type="string"/>
+        <property name="password" column="password" type="string"/>
+    </class>
+    <class table="Admin" name="Domain.Admin">
+        <id name="id" column="id" type="long">
+            <generator class="increment"/>
+        </id>
+        <property name="username" column="username" type="string"/>
+        <property name="password" column="password" type="string"/>
+    </class>
+    <class table="Device" name="Domain.Device">
+        <id name="id" column="id" type="long">
+            <generator class="increment"/>
+        </id>
+        <property name="description" column="description" type="string"/>
+        <property name="address" column="address" type="string"/>
+        <property name="maxHConsumption" column="maxHConsumption" type="float"/>
+    </class>
+    <class table="ClientDevice" name="Domain.ClientDevice">
+        <id name="id" column="id" type="long">
+            <generator class="increment"/>
+        </id>
+        <property name="idClient" column="idClient" type="long"/>
+        <property name="idDevice" column="idDevice" type="long"/>
+    </class>
+</hibernate-mapping>
