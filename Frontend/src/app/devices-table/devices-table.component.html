@@ -1,0 +1,53 @@
+<h1>DEVICES</h1>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Description</th>
+    <th>Address</th>
+    <th>Maximum Hour Consumption</th>
+    <th>Actions</th>
+  </tr>
+  <tr *ngFor="let device of devices">
+    <td>{{ device.id }}</td>
+    <td>{{ device.description }}</td>
+    <td>{{ device.address }}</td>
+    <td>{{ device.maxHConsumption }}</td>
+    <td>
+      <div>
+        <button (click)="openModal('modify-device-modal-' + device.id.toString(),true,device)">Modify</button>
+        <jw-modal id="modify-device-modal-{{device.id.toString()}}">
+          <div>
+            <label>Description: </label>
+            <input type="text" [(ngModel)]="description"/>
+          </div>
+          <div>
+            <label>Address: </label>
+            <input type="text" [(ngModel)]="address"/>
+          </div>
+          <div>
+            <label>Max Hour Consumption: </label>
+            <input type="number" [(ngModel)]="maxHConsumption"/>
+          </div>
+          <button (click)="updateDevice(device.id)">Save Changes</button>
+        </jw-modal>
+        <button (click)="deleteDevice(device.id)">Delete</button>
+      </div>
+    </td>
+  </tr>
+</table>
+<button (click)="openModal('add-device-modal',false,undefined)">Add Device</button>
+<jw-modal id="add-device-modal">
+  <div>
+    <label>Description: </label>
+    <input type="text" [(ngModel)]="description"/>
+  </div>
+  <div>
+    <label>Address: </label>
+    <input type="text" [(ngModel)]="address"/>
+  </div>
+  <div>
+    <label>Max Hour Consumption: </label>
+    <input type="number" [(ngModel)]="maxHConsumption"/>
+  </div>
+  <button (click)="saveDevice()">Save Device</button>
+</jw-modal>

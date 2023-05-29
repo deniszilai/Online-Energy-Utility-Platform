@@ -1,0 +1,16 @@
+<div>Welcome Admin!</div>
+<app-devices-table></app-devices-table>
+<app-clients-table></app-clients-table>
+<button (click)="openModal('add-link-modal')">Add Link on Device with Client</button>
+<jw-modal id="add-link-modal">
+  <div>
+    <label>Client ID: </label>
+    <input type="number" min="0" [(ngModel)]="idClient"/>
+  </div>
+  <div>
+    <label>Device ID: </label>
+    <input type="number" min="0" [(ngModel)]="idDevice"/>
+  </div>
+  <button (click)="saveLink()">Save Link</button>
+</jw-modal>
+

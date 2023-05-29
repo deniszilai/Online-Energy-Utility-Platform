@@ -1,0 +1,43 @@
+<h1>Clients</h1>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Username</th>
+    <th>Password</th>
+    <th>Actions</th>
+  </tr>
+  <tr *ngFor="let client of clients">
+    <td>{{client.id}}</td>
+    <td>{{client.username}}</td>
+    <td>{{client.password}}</td>
+    <td>
+      <div>
+        <button (click)="openModal('modify-client-modal-' + client.id.toString(),true,client)">Modify</button>
+        <jw-modal id="modify-client-modal-{{client.id.toString()}}">
+          <div>
+            <label>Username: </label>
+            <input type="text" [(ngModel)]="username"/>
+          </div>
+          <div>
+            <label>Password: </label>
+            <input type="password" [(ngModel)]="password"/>
+          </div>
+          <button (click)="updateClient(client.id)">Save Changes</button>
+        </jw-modal>
+        <button (click)="deleteClient(client.id)">Delete</button>
+      </div>
+    </td>
+  </tr>
+</table>
+<button (click)="openModal('add-client-modal',false,undefined)">Add Client</button>
+<jw-modal id="add-client-modal">
+  <div>
+    <label>Username: </label>
+    <input type="text" [(ngModel)]="username"/>
+  </div>
+  <div>
+    <label>Password: </label>
+    <input type="password" [(ngModel)]="password"/>
+  </div>
+  <button (click)="saveClient()">Save Client</button>
+</jw-modal>
